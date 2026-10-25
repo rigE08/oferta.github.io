@@ -31,20 +31,26 @@ td{padding:4px 6px;border-bottom:1px solid var(--bd)}td input{margin:0;min-width
 #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:8px 16px;border-radius:6px;display:none}
 #bar{display:none;position:fixed;left:0;right:0;bottom:0;justify-content:space-between;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--tx);color:var(--bg);font-size:16px;z-index:5}
 @media screen and (max-width:860px){
-.mob{display:inline-block}td.sm{display:flex;grid-column:1/-1;align-items:center;gap:10px;cursor:pointer;padding:4px 2px;font-size:15px}td.sm::before{display:none}td.sm b{flex:1;text-align:right}td.sm .ar{font-size:20px;color:var(--ac);width:22px}tr.cl td:not(.full):not(.sm){display:none}tr.cl{gap:2px;padding:8px 10px}
-main{padding:10px;gap:12px}section{padding:12px}body{padding-bottom:64px}
+.mob{display:inline-block}main{padding:10px;gap:12px}section{padding:12px}body{padding-bottom:64px}
 header{padding:10px 12px}header h1{width:100%;font-size:16px}header div{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}header button{padding:9px 6px}
-input,textarea,button{font-size:16px}.tw{overflow:visible}table{min-width:0}table,tbody{display:block}thead{display:none}
-tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;padding:10px;margin-bottom:10px;border:1px solid var(--bd);border-radius:8px;background:var(--in)}
-td{display:block;border:0;padding:0;width:auto!important}td::before{content:attr(data-label);display:block;font-size:12px;color:var(--mu);margin-bottom:2px}
-td.full,td.x{grid-column:1/-1}td.x{text-align:right}td.x::before{display:none}td.r{text-align:left;font-size:16px;font-weight:600}td.c{text-align:left}
-td input{min-width:0}td input[type=checkbox]{width:24px;height:24px}.x button{padding:8px 14px}#bar{display:flex}.tot{max-width:none}}
-#print{display:none}
-@media print{body>*:not(#print){display:none!important}#print{display:block;color:#000;background:#fff;font:12px/1.4 Arial,sans-serif;padding:14mm}
-#print table{min-width:0;width:100%;margin-top:10px}#print th,#print td{border:1px solid #999;padding:3px 4px;color:#000;font-size:11px}#print th{background:#e8ecee}
-#print h1{font-size:22px;margin:0 0 8px}#print .pg{display:flex;gap:30px;margin:10px 0}#print .pg div{flex:1}
-#print .t{margin:12px 0 0 auto;width:55%}#print .t td{border:0;border-bottom:1px solid #bbb}#print .t tr:last-child td{font-weight:700;font-size:14px;border-bottom:2px solid #000}
-@page{margin:0}}
+input,textarea,button{font-size:16px}.tw{overflow:visible}main table{min-width:0}main table,main tbody{display:block}main thead{display:none}
+main tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;padding:10px;margin-bottom:10px;border:1px solid var(--bd);border-radius:8px;background:var(--in)}
+main td{display:block;border:0;padding:0;width:auto!important}main td::before{content:attr(data-label);display:block;font-size:12px;color:var(--mu);margin-bottom:2px}
+main td.full,main td.x{grid-column:1/-1}main td.x{text-align:right}main td.x::before{display:none}main td.r{text-align:left;font-size:16px;font-weight:600}main td.c{text-align:left}
+main td input{min-width:0}main td input[type=checkbox]{width:24px;height:24px}.x button{padding:8px 14px}#bar{display:flex}.tot{max-width:none}
+main td.sm{display:flex;grid-column:1/-1;align-items:center;gap:10px;cursor:pointer;padding:4px 2px;font-size:15px}main td.sm::before{display:none}main td.sm b{flex:1;text-align:right}main td.sm .ar{font-size:20px;color:var(--ac);width:22px}
+main tr.cl td:not(.full):not(.sm){display:none}main tr.cl{gap:2px;padding:8px 10px}}
+#print,#pvbar{display:none}
+body.pv #print{display:block;position:fixed;left:0;right:0;top:50px;bottom:0;overflow:auto;background:#d9dde1;z-index:40}
+body.pv #pvbar{display:flex;position:fixed;top:0;left:0;right:0;height:50px;gap:8px;padding:7px 10px;background:#10161c;z-index:41;align-items:center}
+#sheet{box-sizing:border-box;background:#fff;color:#000;font:12px/1.4 Arial,sans-serif;padding:14mm}
+body.pv #sheet{width:794px;margin:0 auto}
+#print table{min-width:0;width:100%;table-layout:fixed;border-collapse:collapse;margin-top:10px}
+#print th,#print td{border:1px solid #999;padding:3px 4px;color:#000;font-size:11px;overflow-wrap:anywhere;vertical-align:top;text-align:left}
+#print td.r{text-align:right}#print th{background:#e8ecee}#print tr{break-inside:avoid}
+#print h1{font-size:22px;margin:0 0 8px;color:#000}#print .pg{display:flex;gap:30px;margin:10px 0}#print .pg div{flex:1}
+#print table.t{table-layout:auto;margin:12px 0 0 auto;width:55%}#print .t td{border:0;border-bottom:1px solid #bbb}#print .t tr:last-child td{font-weight:700;font-size:14px;border-bottom:2px solid #000}
+@media print{html,body{background:#fff!important;padding:0!important}body>*:not(#print){display:none!important}body.pv #print,#print{display:block;position:static;overflow:visible;background:#fff}#sheet{padding:14mm;width:auto}@page{margin:0}}
 </style></head><body>
 <header><h1>Generator oferte supraveghere</h1><div>
 <button onclick="nou()">Ofertă nouă</button><button onclick="saveJ()">Salvează ofertă (fișier)</button>
@@ -88,7 +94,7 @@ td input{min-width:0}td input[type=checkbox]{width:24px;height:24px}.x button{pa
 <div class="int" style="border:0"><span>Intern: cost achiziție / profit estimat (nu apar în ofertă)</span><span id="tInt"></span></div></div></section>
 
 <section><h2>Observații în ofertă</h2><textarea rows="3" data-s="meta" data-f="note"></textarea></section>
-</main><div id="bar"><span>Total de plată</span><b id="tBar"></b></div><div id="toast"></div><div id="print"></div>
+<p class="int" style="text-align:center">Versiune 4</p></main><div id="bar"><span>Total de plată</span><b id="tBar"></b></div><div id="toast"></div><div id="pvbar"><button class="p" onclick="window.print()">Tipărește / Salvează PDF</button><button onclick="document.body.classList.remove('pv')">Închide</button></div><div id="print"></div>
 <datalist id="cat"></datalist>
 <script>
 const $=s=>document.querySelector(s),KEY='oferte_v1',CK='oferte_cat_v1';
@@ -173,15 +179,17 @@ function pdf(){const T=tot(),m=S.meta,cu=S.set.moneda;
 const mr=S.mat.filter(x=>x.n||N(x.p)).map((x,i)=>{const c=rm(x);return`<tr><td>${i+1}</td><td>${esc(x.n)}</td><td>${esc(x.u)}</td><td class="r">${N(x.q)}</td><td class="r">${f(c.u)}</td><td class="r">${f(c.ug)}</td><td class="r">${f(c.n)}</td><td class="r">${f(c.v)}</td><td class="r">${f(c.t)}</td></tr>`}).join('');
 const lr=S.man.filter(x=>x.n||N(x.q)).map((x,i)=>{const c=rl(x);return`<tr><td>${i+1}</td><td>${esc(x.n)}</td><td class="r">${N(x.q)}</td><td class="r">${f(c.t)}</td><td class="r">${f(c.tg)}</td><td class="r">${f(c.n)}</td><td class="r">${f(c.v)}</td><td class="r">${f(c.s)}</td></tr>`}).join('');
 const d=m.data?m.data.split('-').reverse().join('.'):'',tv=N(S.set.tva);
-$('#print').innerHTML=`<h1>OFERTĂ ${esc(m.nr)}</h1><div>Data: ${d} &nbsp;|&nbsp; Valabilitate: ${N(m.val)} zile</div>
+$('#print').innerHTML=`<div id="sheet"><h1>OFERTĂ ${esc(m.nr)}</h1><div>Data: ${d} &nbsp;|&nbsp; Valabilitate: ${N(m.val)} zile</div>
 <div class="pg"><div><b>Furnizor</b><br>${esc(m.furn)}<br>${m.cui?'CUI: '+esc(m.cui)+'<br>':''}${esc(m.contact)}</div><div><b>Client</b><br>${esc(m.client)}<br>${esc(m.obiectiv)}</div></div>
-${mr?`<table><thead><tr><th>Nr.</th><th>Materiale / echipamente</th><th>UM</th><th>Cant.</th><th>Preț unitar fără TVA</th><th>Preț unitar cu TVA</th><th>Total fără TVA</th><th>TVA ${tv}%</th><th>Total cu TVA</th></tr></thead><tbody>${mr}</tbody></table>`:''}
-${lr?`<table><thead><tr><th>Nr.</th><th>Manoperă / servicii</th><th>Cant.</th><th>Tarif fără TVA</th><th>Tarif cu TVA</th><th>Total fără TVA</th><th>TVA ${tv}%</th><th>Total cu TVA</th></tr></thead><tbody>${lr}</tbody></table>`:''}
+${mr?`<table><colgroup><col style="width:5%"><col style="width:25%"><col style="width:6%"><col style="width:7%"><col style="width:12%"><col style="width:12%"><col style="width:12%"><col style="width:9%"><col style="width:12%"></colgroup><thead><tr><th>Nr.</th><th>Materiale / echipamente</th><th>UM</th><th>Cant.</th><th>Preț unitar fără TVA</th><th>Preț unitar cu TVA</th><th>Total fără TVA</th><th>TVA ${tv}%</th><th>Total cu TVA</th></tr></thead><tbody>${mr}</tbody></table>`:''}
+${lr?`<table><colgroup><col style="width:5%"><col style="width:31%"><col style="width:7%"><col style="width:13%"><col style="width:13%"><col style="width:12%"><col style="width:9%"><col style="width:10%"></colgroup><thead><tr><th>Nr.</th><th>Manoperă / servicii</th><th>Cant.</th><th>Tarif fără TVA</th><th>Tarif cu TVA</th><th>Total fără TVA</th><th>TVA ${tv}%</th><th>Total cu TVA</th></tr></thead><tbody>${lr}</tbody></table>`:''}
 <table class="t"><tr><td>Total fără TVA</td><td class="r">${f(T.net)} ${cu}</td></tr><tr><td>TVA ${tv}%</td><td class="r">${f(T.tva)} ${cu}</td></tr>
 ${T.d?`<tr><td>Discount ${N(S.set.disc)}%</td><td class="r">-${f(T.d)} ${cu}</td></tr>`:''}<tr><td>TOTAL DE PLATĂ</td><td class="r">${f(T.tot)} ${cu}</td></tr></table>
-<p style="white-space:pre-wrap;margin-top:16px">${esc(m.note)}</p>`;
-const t=document.title;document.title=fname();window.print();document.title=t}
+<p style="white-space:pre-wrap;margin-top:16px">${esc(m.note)}</p></div>`;
+document.body.classList.add('pv');const sh=$('#sheet');sh.style.zoom=Math.min(1,innerWidth/800);$('#print').scrollTop=0}
 
+const T0=document.title,zm=()=>{const sh=$('#sheet');if(sh)sh.style.zoom=document.body.classList.contains('pv')?Math.min(1,innerWidth/800):1};
+window.onbeforeprint=()=>{const sh=$('#sheet');if(sh)sh.style.zoom=1;document.title=fname()};window.onafterprint=()=>{document.title=T0;zm()};window.addEventListener('resize',zm);
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 rows();
 </script></body></html>
