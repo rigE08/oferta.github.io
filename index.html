@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Generator oferte supraveghere</title>
+<meta name="theme-color" content="#0e7c86"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#eef0ec;--cd:#fff;--tx:#1d2a35;--mu:#66727d;--ac:#0e7c86;--bd:#d6dad4;--in:#f7f8f6}
+@media(prefers-color-scheme:dark){:root{--bg:#14191e;--cd:#1c242b;--tx:#e6ebee;--mu:#8f9ca6;--ac:#4cc3cd;--bd:#2d3842;--in:#232d35}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 "Segoe UI",system-ui,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 20px;background:#10161c;color:#e6ebee}
+header h1{margin:0;font-size:18px;letter-spacing:.2px;color:#ffb020}
+header div{display:flex;flex-wrap:wrap;gap:8px}
+button{font:inherit;cursor:pointer;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:6px;padding:6px 12px}
+button:hover{border-color:var(--ac)}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
+button.p{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600}
+main{max-width:1180px;margin:0 auto;padding:18px;display:grid;gap:16px}
+section{background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:16px}
+h2{margin:0 0 12px;font-size:16px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+label{display:block;font-size:13px;color:var(--mu)}
+input,textarea{width:100%;font:inherit;color:var(--tx);background:var(--in);border:1px solid var(--bd);border-radius:5px;padding:6px 8px;margin-top:3px}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:1080px}
+th{font-size:13px;text-align:left;color:var(--mu);font-weight:600;padding:4px 6px;border-bottom:2px solid var(--bd)}
+td{padding:4px 6px;border-bottom:1px solid var(--bd)}td input{margin:0;min-width:64px}input[type=number]{-moz-appearance:textfield;appearance:textfield}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.x{white-space:nowrap}.c{text-align:center;width:54px}.fl{display:flex;gap:6px;align-items:center}td input[type=checkbox]{min-width:0;width:18px;height:18px;margin:0;accent-color:var(--ac);flex:none}.x button{padding:3px 8px;margin-left:3px}
+.add{margin-top:10px}.add+.add{margin-left:8px}.mob,td.sm{display:none}
+.tot{margin-left:auto;max-width:420px;width:100%}
+.tot div{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--bd)}
+.tot .big{font-size:20px;font-weight:700;color:var(--ac);border:0;padding-top:10px}
+.int{margin-top:10px;font-size:13px;color:var(--mu)}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:8px 16px;border-radius:6px;display:none}
+#bar{display:none;position:fixed;left:0;right:0;bottom:0;justify-content:space-between;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--tx);color:var(--bg);font-size:16px;z-index:5}
+@media(max-width:860px){
+.mob{display:inline-block}td.sm{display:flex;grid-column:1/-1;align-items:center;gap:10px;cursor:pointer;padding:4px 2px;font-size:15px}td.sm::before{display:none}td.sm b{flex:1;text-align:right}td.sm .ar{font-size:20px;color:var(--ac);width:22px}tr.cl td:not(.full):not(.sm){display:none}tr.cl{gap:2px;padding:8px 10px}
+main{padding:10px;gap:12px}section{padding:12px}body{padding-bottom:64px}
+header{padding:10px 12px}header h1{width:100%;font-size:16px}header div{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}header button{padding:9px 6px}
+input,textarea,button{font-size:16px}.tw{overflow:visible}table{min-width:0}table,tbody{display:block}thead{display:none}
+tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;padding:10px;margin-bottom:10px;border:1px solid var(--bd);border-radius:8px;background:var(--in)}
+td{display:block;border:0;padding:0;width:auto!important}td::before{content:attr(data-label);display:block;font-size:12px;color:var(--mu);margin-bottom:2px}
+td.full,td.x{grid-column:1/-1}td.x{text-align:right}td.x::before{display:none}td.r{text-align:left;font-size:16px;font-weight:600}td.c{text-align:left}
+td input{min-width:0}td input[type=checkbox]{width:24px;height:24px}.x button{padding:8px 14px}#bar{display:flex}.tot{max-width:none}}
+#print{display:none}
+@media print{body>*:not(#print){display:none!important}#print{display:block;color:#000;background:#fff;font:12px/1.4 Arial,sans-serif;padding:0}
+#print table{min-width:0;width:100%;margin-top:10px}#print th,#print td{border:1px solid #999;padding:3px 4px;color:#000;font-size:11px}#print th{background:#e8ecee}
+#print h1{font-size:22px;margin:0 0 8px}#print .pg{display:flex;gap:30px;margin:10px 0}#print .pg div{flex:1}
+#print .t{margin:12px 0 0 auto;width:55%}#print .t td{border:0;border-bottom:1px solid #bbb}#print .t tr:last-child td{font-weight:700;font-size:14px;border-bottom:2px solid #000}
+@page{margin:14mm}}
+</style></head><body>
+<header><h1>Generator oferte supraveghere</h1><div>
+<button onclick="nou()">Ofertă nouă</button><button onclick="saveJ()">Salvează ofertă (fișier)</button>
+<button onclick="$('#fj').click()">Încarcă ofertă</button><input type="file" id="fj" accept=".json" hidden onchange="loadJ(this)">
+<button class="p" onclick="xl()">Export Excel</button><button class="p" onclick="pdf()">Export PDF</button></div></header>
+<main>
+<section><h2>Date ofertă</h2><div class="g">
+<label>Nr. ofertă<input data-s="meta" data-f="nr"></label>
+<label>Data<input type="date" data-s="meta" data-f="data"></label>
+<label>Valabilitate (zile)<input type="number" data-s="meta" data-f="val"></label>
+<label>Furnizor<input data-s="meta" data-f="furn"></label>
+<label>CUI furnizor<input data-s="meta" data-f="cui"></label>
+<label>Contact furnizor<input data-s="meta" data-f="contact" placeholder="telefon, email"></label>
+<label>Client<input data-s="meta" data-f="client"></label>
+<label>Obiectiv / adresă<input data-s="meta" data-f="obiectiv"></label></div></section>
+
+<section><h2>Parametri de calcul</h2><div class="g">
+<label>TVA (%), aplicat pe fiecare linie<input type="number" step="any" data-s="set" data-f="tva"></label>
+<label>Adaos implicit materiale (%)<input type="number" step="any" data-s="set" data-f="adaos"></label>
+<label>Tarif manoperă implicit (per oră / unitate)<input type="number" step="any" data-s="set" data-f="tarif"></label>
+<label>Discount ofertă (%)<input type="number" step="any" data-s="set" data-f="disc"></label>
+<label>Monedă<input data-s="set" data-f="moneda"></label></div>
+<p class="int">TVA-ul se calculează pe fiecare linie: preț achiziție + TVA = preț cu TVA, apoi + adaos = preț de vânzare cu TVA. Pe fiecare linie poți debifa TVA sau Adaos. Adaosul și tariful de pe fiecare linie rămân goale ca să folosească valorile implicite; completează-le doar când o linie are alt adaos sau alt tarif.</p></section>
+
+<section><h2>Materiale și echipamente</h2><div class="tw"><table>
+<thead><tr><th style="width:24%">Denumire</th><th>UM</th><th>Cant.</th><th>Preț achiziție (fără TVA)</th><th title="Bifat = se adaugă TVA">TVA</th><th class="r">Preț achiziție cu TVA</th><th title="Bifat = se adaugă adaos">Adaos %</th><th class="r">Preț vânzare cu TVA</th><th class="r">Total cu TVA</th><th></th></tr></thead>
+<tbody id="mat"></tbody></table></div>
+<button class="add" onclick="add('mat')">+ Adaugă produs</button><button class="add mob" onclick="tgAll('mat')">Extinde / restrânge tot</button>
+<p class="int">Pentru preț fix (ex. materiale mărunte): debifează TVA și Adaos, iar prețul introdus rămâne exact cum l-ai scris. ★ salvează produsul în catalog (nume, UM, preț, adaos); data viitoare apare în lista de sugestii la denumire.</p></section>
+
+<section><h2>Manoperă și servicii</h2><div class="tw"><table>
+<thead><tr><th style="width:40%">Descriere</th><th>Cantitate (ore / buc)</th><th>Tarif fără TVA</th><th title="Bifat = se adaugă TVA">TVA</th><th class="r">Tarif cu TVA</th><th class="r">Total cu TVA</th><th></th></tr></thead>
+<tbody id="man"></tbody></table></div>
+<button class="add" onclick="add('man')">+ Adaugă serviciu</button><button class="add mob" onclick="tgAll('man')">Extinde / restrânge tot</button></section>
+
+<section><h2>Totaluri</h2><div class="tot">
+<div><span>Materiale fără TVA</span><b id="tMat"></b></div><div><span>Manoperă fără TVA</span><b id="tMan"></b></div>
+<div><span>Total fără TVA</span><b id="tNet"></b></div><div><span id="lTva">TVA</span><b id="tTva"></b></div>
+<div><span>Subtotal cu TVA</span><b id="tSub"></b></div><div><span>Discount</span><b id="tDisc"></b></div>
+<div class="big"><span>Total de plată</span><span id="tTot"></span></div>
+<div class="int" style="border:0"><span>Intern: cost achiziție / profit estimat (nu apar în ofertă)</span><span id="tInt"></span></div></div></section>
+
+<section><h2>Observații în ofertă</h2><textarea rows="3" data-s="meta" data-f="note"></textarea></section>
+</main><div id="bar"><span>Total de plată</span><b id="tBar"></b></div><div id="toast"></div><div id="print"></div>
+<datalist id="cat"></datalist>
+<script>
+const $=s=>document.querySelector(s),KEY='oferte_v1',CK='oferte_cat_v1';
+const blank=()=>({meta:{nr:'',data:new Date().toISOString().slice(0,10),val:30,furn:'',cui:'',contact:'',client:'',obiectiv:'',note:'Prețurile includ materialele și manopera menționate. Termen de execuție conform înțelegerii.'},
+set:{tva:21,adaos:25,tarif:100,disc:0,moneda:'RON'},mat:[{n:'',u:'buc',q:1,p:0,a:'',o:true}],man:[{n:'Montaj și configurare',q:1,t:''}]});
+const defCat=[["Cameră IP 4MP dome","buc"],["Cameră IP 4MP bullet","buc"],["Cameră analog 5MP","buc"],["NVR 8 canale","buc"],["NVR 16 canale","buc"],["DVR 8 canale","buc"],["HDD supraveghere 4TB","buc"],["Switch PoE 8 porturi","buc"],["Sursă alimentare 12V","buc"],["Cablu UTP cat6","m"],["Conectori / mufe","buc"],["Cutie conexiuni","buc"],["Monitor","buc"],["UPS","buc"]].map(([n,u])=>({n,u,p:0,a:''}));
+const jl=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+let S=jl(KEY,blank()),C=jl(CK,defCat);
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const N=v=>parseFloat(String(v).replace(',','.'))||0,r2=x=>Math.round((x+Number.EPSILON)*100)/100;
+const f=x=>x.toLocaleString('ro-RO',{minimumFractionDigits:2,maximumFractionDigits:2});
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const tv=()=>N(S.set.tva)/100;
+const rm=m=>{const t=m.tv===false?0:tv(),a=m.ad===false?0:(m.a===''?N(S.set.adaos):N(m.a)),p0=r2(N(m.p)*(1+t)),ug=r2(p0*(1+a/100)),u=r2(ug/(1+t)),g=r2(ug*N(m.q)),n=r2(g/(1+t));return{p0,ug,u,n,v:r2(g-n),t:g,c:N(m.p)*N(m.q)}};
+const rl=l=>{const t=l.tv===false?0:tv(),f0=l.t===''?N(S.set.tarif):N(l.t),n=r2(f0*N(l.q)),v=r2(n*t);return{t:f0,tg:r2(f0*(1+t)),n,v,s:r2(n+v)}};
+function tot(){let mn=0,mv=0,ln=0,lv=0,cost=0;S.mat.forEach(m=>{const x=rm(m);mn+=x.n;mv+=x.v;cost+=x.c});S.man.forEach(l=>{const x=rl(l);ln+=x.n;lv+=x.v});
+mn=r2(mn);mv=r2(mv);ln=r2(ln);lv=r2(lv);const net=r2(mn+ln),tva=r2(mv+lv),sub=r2(net+tva),d=N(S.set.disc)/100,dn=r2(net*d),dt=r2(tva*d),dd=r2(dn+dt);
+return{mn,mv,ln,lv,net,tva,sub,d:dd,dn,dt,tot:r2(sub-dd),netF:r2(net-dn),tvaF:r2(tva-dt),cost:r2(cost),pr:r2(net-dn-cost)}}
+const cb=(k,i,fl,on)=>`<input type="checkbox" ${on?'checked':''} onchange="chk('${k}',${i},'${fl}',this.checked)">`;
+const inp=(k,i,fl,v,cls='',ph='')=>`<input class="${cls}" ${cls.includes('n')?'type=number step=any':''} placeholder="${ph}" value="${esc(v)}" oninput="upd('${k}',${i},'${fl}',this.value)">`;
+function rows(){
+$('#mat').innerHTML=S.mat.map((m,i)=>`<tr class="${m.o?'':'cl'}"><td class="full" data-label="Denumire"><input list="cat" value="${esc(m.n)}" placeholder="Denumire produs" onchange="pick(${i},this.value)"></td><td class="sm" onclick="tg('mat',${i})"><span class="ar">${m.o?'▾':'▸'}</span><b id="sm${i}"></b></td><td style="width:90px" data-label="UM">${inp('mat',i,'u',m.u)}</td><td style="width:100px" data-label="Cantitate">${inp('mat',i,'q',m.q,'n')}</td><td style="width:130px" data-label="Preț achiziție fără TVA">${inp('mat',i,'p',m.p,'n')}</td><td class="c" data-label="TVA">${cb('mat',i,'tv',m.tv!==false)}</td><td class="r" data-label="Achiziție cu TVA" id="mp${i}"></td><td style="width:150px" data-label="Adaos %"><div class="fl">${cb('mat',i,'ad',m.ad!==false)}${m.ad===false?'<input class="n" disabled placeholder="fix">':inp('mat',i,'a',m.a,'n ma',S.set.adaos)}</div></td><td class="r" data-label="Preț vânzare cu TVA" id="mg${i}"></td><td class="r" data-label="Total cu TVA" id="mt${i}"></td><td class="x"><button title="Salvează în catalog" onclick="toCat(${i})">★</button><button title="Șterge" onclick="del('mat',${i})">✕</button></td></tr>`).join('');
+$('#man').innerHTML=S.man.map((l,i)=>`<tr class="${l.o?'':'cl'}"><td class="full" data-label="Descriere">${inp('man',i,'n',l.n)}</td><td class="sm" onclick="tg('man',${i})"><span class="ar">${l.o?'▾':'▸'}</span><b id="sl${i}"></b></td><td style="width:120px" data-label="Cantitate">${inp('man',i,'q',l.q,'n')}</td><td style="width:120px" data-label="Tarif fără TVA">${inp('man',i,'t',l.t,'n mt',S.set.tarif)}</td><td class="c" data-label="TVA">${cb('man',i,'tv',l.tv!==false)}</td><td class="r" data-label="Tarif cu TVA" id="lg${i}"></td><td class="r" data-label="Total cu TVA" id="ls${i}"></td><td class="x"><button title="Șterge" onclick="del('man',${i})">✕</button></td></tr>`).join('');
+$('#cat').innerHTML=C.map(c=>`<option value="${esc(c.n)}">`).join('');calc()}
+function calc(){const cu=S.set.moneda;
+document.querySelectorAll('.ma').forEach(e=>e.placeholder=S.set.adaos);document.querySelectorAll('.mt').forEach(e=>e.placeholder=S.set.tarif);
+S.mat.forEach((m,i)=>{const x=rm(m);$('#mp'+i).textContent=f(x.p0);$('#sm'+i).textContent=N(m.q)+' '+m.u+' × '+f(x.ug)+' = '+f(x.t);$('#mg'+i).textContent=f(x.ug);$('#mt'+i).textContent=f(x.t)});
+S.man.forEach((l,i)=>{const x=rl(l);$('#lg'+i).textContent=f(x.tg);$('#ls'+i).textContent=f(x.s);$('#sl'+i).textContent=N(l.q)+' × '+f(x.tg)+' = '+f(x.s)});
+const T=tot(),s=(id,v)=>$(id).textContent=f(v)+' '+cu;
+s('#tMat',T.mn);s('#tMan',T.ln);s('#tNet',T.net);s('#tTva',T.tva);s('#tSub',T.sub);s('#tDisc',-T.d);s('#tTot',T.tot);s('#tBar',T.tot);
+$('#lTva').textContent='TVA '+N(S.set.tva)+'%';$('#tInt').textContent=f(T.cost)+' / '+f(T.pr)+' '+cu}
+function tg(k,i){S[k][i].o=!S[k][i].o;rows();save()}
+function tgAll(k){const any=S[k].some(x=>x.o);S[k].forEach(x=>x.o=!any);rows();save()}
+function chk(k,i,fl,v){S[k][i][fl]=v;rows();save()}
+function upd(k,i,fl,v){S[k][i][fl]=v;calc();save()}
+function add(k){S[k].push(k=='mat'?{n:'',u:'buc',q:1,p:0,a:'',o:true}:{n:'',q:1,t:'',o:true});rows();save()}
+function del(k,i){S[k].splice(i,1);if(!S[k].length)add(k);else rows();save()}
+function pick(i,v){const m=S.mat[i];m.n=v;const c=C.find(x=>x.n.toLowerCase()==v.toLowerCase());if(c&&!N(m.p)){m.u=c.u;m.p=c.p;m.a=c.a;m.tv=c.tv;m.ad=c.ad}rows();save()}
+function toCat(i){const m=S.mat[i];if(!m.n)return toast('Completează denumirea');const c={n:m.n,u:m.u,p:m.p,a:m.a,tv:m.tv,ad:m.ad},k=C.findIndex(x=>x.n.toLowerCase()==m.n.toLowerCase());k<0?C.push(c):C[k]=c;
+try{localStorage.setItem(CK,JSON.stringify(C))}catch(e){}rows();toast('Salvat în catalog')}
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1800)}
+document.querySelectorAll('[data-s]').forEach(e=>{e.value=S[e.dataset.s][e.dataset.f]??'';e.oninput=()=>{S[e.dataset.s][e.dataset.f]=e.value;calc();save()}});
+function nou(){if(!confirm('Pornești o ofertă nouă? Oferta curentă se pierde dacă nu a fost salvată ca fișier.'))return;const o=S,b=blank();b.set=o.set;['furn','cui','contact'].forEach(k=>b.meta[k]=o.meta[k]);S=b;
+document.querySelectorAll('[data-s]').forEach(e=>e.value=S[e.dataset.s][e.dataset.f]??'');rows();save()}
+function dl(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+const fname=()=>'Oferta_'+(S.meta.nr||'noua').replace(/[^\w-]+/g,'_')+'_'+(S.meta.client||'').replace(/[^\w-]+/g,'_');
+function saveJ(){dl(new Blob([JSON.stringify(S)],{type:'application/json'}),fname()+'.json')}
+function loadJ(el){const fl=el.files[0];if(!fl)return;fl.text().then(t=>{try{S=JSON.parse(t);document.querySelectorAll('[data-s]').forEach(e=>e.value=S[e.dataset.s][e.dataset.f]??'');rows();save()}catch(e){toast('Fișier invalid')}});el.value=''}
+function mkX(A,W){const E=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'),L=j=>{let s='',n=j+1;while(n>0){const m=(n-1)%26;s=String.fromCharCode(65+m)+s;n=Math.floor((n-1)/26)}return s};
+let rows='';A.forEach((r,i)=>{let cs='';r.forEach((c,j)=>{if(c===''||c==null)return;const ref=L(j)+(i+1);
+if(typeof c=='object')cs+=`<c r="${ref}" s="1">${c.f?`<f>${E(c.f)}</f>`:''}<v>${c.v}</v></c>`;else if(typeof c=='number')cs+=`<c r="${ref}"><v>${c}</v></c>`;else cs+=`<c r="${ref}" t="inlineStr"><is><t xml:space="preserve">${E(c)}</t></is></c>`});rows+=`<row r="${i+1}">${cs}</row>`});
+const H='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',M='http://schemas.openxmlformats.org/spreadsheetml/2006/main',R='http://schemas.openxmlformats.org/officeDocument/2006/relationships',PR='http://schemas.openxmlformats.org/package/2006/relationships';
+const files={'[Content_Types].xml':H+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>',
+'_rels/.rels':H+`<Relationships xmlns="${PR}"><Relationship Id="rId1" Type="${R}/officeDocument" Target="xl/workbook.xml"/></Relationships>`,
+'xl/workbook.xml':H+`<workbook xmlns="${M}" xmlns:r="${R}"><sheets><sheet name="Oferta" sheetId="1" r:id="rId1"/></sheets></workbook>`,
+'xl/_rels/workbook.xml.rels':H+`<Relationships xmlns="${PR}"><Relationship Id="rId1" Type="${R}/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="${R}/styles" Target="styles.xml"/></Relationships>`,
+'xl/styles.xml':H+`<styleSheet xmlns="${M}"><fonts count="1"><font><sz val="11"/><name val="Calibri"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="2"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="4" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`,
+'xl/worksheets/sheet1.xml':H+`<worksheet xmlns="${M}"><cols>${W.map((w,i)=>`<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join('')}</cols><sheetData>${rows}</sheetData></worksheet>`};
+const T=new Uint32Array(256).map((_,n)=>{for(let k=0;k<8;k++)n=n&1?0xEDB88320^(n>>>1):n>>>1;return n>>>0}),crc=b=>{let c=-1;for(const x of b)c=T[(c^x)&255]^(c>>>8);return(c^-1)>>>0};
+const enc=new TextEncoder(),parts=[],cd=[];let off=0,n=0;
+for(const[name,txt]of Object.entries(files)){const nb=enc.encode(name),d=enc.encode(txt),c=crc(d);n++;
+const h=new DataView(new ArrayBuffer(30));h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x800,true);h.setUint32(14,c,true);h.setUint32(18,d.length,true);h.setUint32(22,d.length,true);h.setUint16(26,nb.length,true);parts.push(new Uint8Array(h.buffer),nb,d);
+const g=new DataView(new ArrayBuffer(46));g.setUint32(0,0x02014b50,true);g.setUint16(4,20,true);g.setUint16(6,20,true);g.setUint16(8,0x800,true);g.setUint32(16,c,true);g.setUint32(20,d.length,true);g.setUint32(24,d.length,true);g.setUint16(28,nb.length,true);g.setUint32(42,off,true);cd.push(new Uint8Array(g.buffer),nb);off+=30+nb.length+d.length}
+let cl=0;cd.forEach(x=>cl+=x.length);const e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,n,true);e.setUint16(10,n,true);e.setUint32(12,cl,true);e.setUint32(16,off,true);
+return new Blob([...parts,...cd,new Uint8Array(e.buffer)],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})}
+
+function xl(){
+const T=tot(),m=S.meta,A=[],P=r=>{A.push(r);return A.length},F=(fm,v)=>({t:'n',f:fm,v}),TV=N(S.set.tva),tv=TV/100,dc=N(S.set.disc),cur=S.set.moneda;
+P(['OFERTĂ '+m.nr]);P(['Data',m.data,'Valabilitate (zile)',N(m.val)]);P(['Furnizor',m.furn,'CUI',m.cui]);P(['Contact',m.contact]);P(['Client',m.client]);P(['Obiectiv',m.obiectiv]);P([]);
+P(['Nr.','Denumire','UM','Cant.','Preț unitar fără TVA','Preț unitar cu TVA','Total fără TVA','TVA '+TV+'%','Total cu TVA']);P(['','MATERIALE']);const a0=A.length+1;
+S.mat.filter(x=>x.n||N(x.p)).forEach((x,i)=>{const c=rm(x),r=A.length+1,lt=x.tv===false?0:tv;P([i+1,x.n,x.u,N(x.q),F(`ROUND(F${r}/(1+${lt}),2)`,c.u),{v:c.ug},F(`ROUND(I${r}/(1+${lt}),2)`,c.n),F(`I${r}-G${r}`,c.v),F(`ROUND(D${r}*F${r},2)`,c.t)])});const a1=A.length;
+P(['','MANOPERĂ ȘI SERVICII']);const b0=A.length+1;
+S.man.filter(x=>x.n||N(x.q)).forEach((x,i)=>{const c=rl(x),r=A.length+1,lt=x.tv===false?0:tv;P([i+1,x.n,'',N(x.q),{v:c.t},F(`ROUND(E${r}*(1+${lt}),2)`,c.tg),F(`ROUND(D${r}*E${r},2)`,c.n),F(`ROUND(G${r}*${lt},2)`,c.v),F(`G${r}+H${r}`,c.s)])});const b1=A.length;P([]);
+const L=(l,a,b,c)=>P(['',l,'','','','',a,b,c]),sm=(k,r0,r1)=>`SUM(${k}${r0}:${k}${r1})`;
+const rM=L('Total materiale',F(sm('G',a0,a1),T.mn),F(sm('H',a0,a1),T.mv),F(sm('I',a0,a1),r2(T.mn+T.mv)));
+const rL=L('Total manoperă',F(sm('G',b0,b1),T.ln),F(sm('H',b0,b1),T.lv),F(sm('I',b0,b1),r2(T.ln+T.lv)));
+const rS=L('Total',F(`G${rM}+G${rL}`,T.net),F(`H${rM}+H${rL}`,T.tva),F(`I${rM}+I${rL}`,T.sub));
+let rD=A.length+1;L('Discount '+dc+'%',F(`-ROUND(G${rS}*${dc}/100,2)`,-T.dn),F(`-ROUND(H${rS}*${dc}/100,2)`,-T.dt),F(`G${rD}+H${rD}`,-T.d));
+const rT=A.length+1;L('TOTAL DE PLATĂ ('+cur+')',F(`G${rS}+G${rD}`,T.netF),F(`H${rS}+H${rD}`,T.tvaF),F(`G${rT}+H${rT}`,T.tot));P([]);P(['Observații',m.note]);
+dl(mkX(A,[6,44,8,8,16,16,16,14,16]),fname()+'.xlsx')}
+function pdf(){const T=tot(),m=S.meta,cu=S.set.moneda;
+const mr=S.mat.filter(x=>x.n||N(x.p)).map((x,i)=>{const c=rm(x);return`<tr><td>${i+1}</td><td>${esc(x.n)}</td><td>${esc(x.u)}</td><td class="r">${N(x.q)}</td><td class="r">${f(c.u)}</td><td class="r">${f(c.ug)}</td><td class="r">${f(c.n)}</td><td class="r">${f(c.v)}</td><td class="r">${f(c.t)}</td></tr>`}).join('');
+const lr=S.man.filter(x=>x.n||N(x.q)).map((x,i)=>{const c=rl(x);return`<tr><td>${i+1}</td><td>${esc(x.n)}</td><td class="r">${N(x.q)}</td><td class="r">${f(c.t)}</td><td class="r">${f(c.tg)}</td><td class="r">${f(c.n)}</td><td class="r">${f(c.v)}</td><td class="r">${f(c.s)}</td></tr>`}).join('');
+const d=m.data?m.data.split('-').reverse().join('.'):'',tv=N(S.set.tva);
+$('#print').innerHTML=`<h1>OFERTĂ ${esc(m.nr)}</h1><div>Data: ${d} &nbsp;|&nbsp; Valabilitate: ${N(m.val)} zile</div>
+<div class="pg"><div><b>Furnizor</b><br>${esc(m.furn)}<br>${m.cui?'CUI: '+esc(m.cui)+'<br>':''}${esc(m.contact)}</div><div><b>Client</b><br>${esc(m.client)}<br>${esc(m.obiectiv)}</div></div>
+${mr?`<table><thead><tr><th>Nr.</th><th>Materiale / echipamente</th><th>UM</th><th>Cant.</th><th>Preț unitar fără TVA</th><th>Preț unitar cu TVA</th><th>Total fără TVA</th><th>TVA ${tv}%</th><th>Total cu TVA</th></tr></thead><tbody>${mr}</tbody></table>`:''}
+${lr?`<table><thead><tr><th>Nr.</th><th>Manoperă / servicii</th><th>Cant.</th><th>Tarif fără TVA</th><th>Tarif cu TVA</th><th>Total fără TVA</th><th>TVA ${tv}%</th><th>Total cu TVA</th></tr></thead><tbody>${lr}</tbody></table>`:''}
+<table class="t"><tr><td>Total fără TVA</td><td class="r">${f(T.net)} ${cu}</td></tr><tr><td>TVA ${tv}%</td><td class="r">${f(T.tva)} ${cu}</td></tr>
+${T.d?`<tr><td>Discount ${N(S.set.disc)}%</td><td class="r">-${f(T.d)} ${cu}</td></tr>`:''}<tr><td>TOTAL DE PLATĂ</td><td class="r">${f(T.tot)} ${cu}</td></tr></table>
+<p style="white-space:pre-wrap;margin-top:16px">${esc(m.note)}</p>`;
+const t=document.title;document.title=fname();window.print();document.title=t}
+
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+rows();
+</script></body></html>
