@@ -30,7 +30,7 @@ td{padding:4px 6px;border-bottom:1px solid var(--bd)}td input{margin:0;min-width
 .int{margin-top:10px;font-size:13px;color:var(--mu)}
 #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:8px 16px;border-radius:6px;display:none}
 #bar{display:none;position:fixed;left:0;right:0;bottom:0;justify-content:space-between;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--tx);color:var(--bg);font-size:16px;z-index:5}
-@media(max-width:860px){
+@media screen and (max-width:860px){
 .mob{display:inline-block}td.sm{display:flex;grid-column:1/-1;align-items:center;gap:10px;cursor:pointer;padding:4px 2px;font-size:15px}td.sm::before{display:none}td.sm b{flex:1;text-align:right}td.sm .ar{font-size:20px;color:var(--ac);width:22px}tr.cl td:not(.full):not(.sm){display:none}tr.cl{gap:2px;padding:8px 10px}
 main{padding:10px;gap:12px}section{padding:12px}body{padding-bottom:64px}
 header{padding:10px 12px}header h1{width:100%;font-size:16px}header div{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}header button{padding:9px 6px}
@@ -40,11 +40,11 @@ td{display:block;border:0;padding:0;width:auto!important}td::before{content:attr
 td.full,td.x{grid-column:1/-1}td.x{text-align:right}td.x::before{display:none}td.r{text-align:left;font-size:16px;font-weight:600}td.c{text-align:left}
 td input{min-width:0}td input[type=checkbox]{width:24px;height:24px}.x button{padding:8px 14px}#bar{display:flex}.tot{max-width:none}}
 #print{display:none}
-@media print{body>*:not(#print){display:none!important}#print{display:block;color:#000;background:#fff;font:12px/1.4 Arial,sans-serif;padding:0}
+@media print{body>*:not(#print){display:none!important}#print{display:block;color:#000;background:#fff;font:12px/1.4 Arial,sans-serif;padding:14mm}
 #print table{min-width:0;width:100%;margin-top:10px}#print th,#print td{border:1px solid #999;padding:3px 4px;color:#000;font-size:11px}#print th{background:#e8ecee}
 #print h1{font-size:22px;margin:0 0 8px}#print .pg{display:flex;gap:30px;margin:10px 0}#print .pg div{flex:1}
 #print .t{margin:12px 0 0 auto;width:55%}#print .t td{border:0;border-bottom:1px solid #bbb}#print .t tr:last-child td{font-weight:700;font-size:14px;border-bottom:2px solid #000}
-@page{margin:14mm}}
+@page{margin:0}}
 </style></head><body>
 <header><h1>Generator oferte supraveghere</h1><div>
 <button onclick="nou()">Ofertă nouă</button><button onclick="saveJ()">Salvează ofertă (fișier)</button>
